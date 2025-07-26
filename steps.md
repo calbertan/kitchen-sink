@@ -2,7 +2,7 @@
 
 Specs:
 - ThinkCentre | i5-7th Gen | 8GB RAM | 256gb SSD
-- Ubuntu 24.04.2 LTS
+- Ubuntu 2nano /etc/system4.04.2 LTS
 - Static IP: 10.0.0.200
 
 Steps:
@@ -45,11 +45,10 @@ ArgoCD
 k -n argocd get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d; echo 
 
-2. port forward, console will be username: admin acessible at https://10.0.0.200:8443
-k port-forward \
-  --address 0.0.0.0 \
-  -n argocd \
-  svc/argocd-server \
-  8443:443
+2. patch argocd-service to NodePort to access console
+kubectl patch svc argocd-server -n argocd \
+  -p '{"spec":{"type":"NodePort"}}'
 
-2. view
+3. view
+
+Infrastructure is not done

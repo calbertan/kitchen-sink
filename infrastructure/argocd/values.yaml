@@ -11,3 +11,8 @@ server:
     pathType: Prefix
   service:
     type: ClusterIP
+
+server:
+  service:
+    type: NodePort
+    nodePort: 30080
