@@ -24,6 +24,14 @@ alias k='kubectl'
 scp calbertan@10.0.0.200:/etc/rancher/k3s/k3s.yaml ./.kube
 server: https://<your_server>:6443
 
+5. Update permissions
+mkdir -p ./.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ./.kube/config
+sudo chown "$USER:$USER" ~/.kube/config
+# optional: make kubectl always use it
+echo 'export KUBECONFIG=$HOME/.kube/config' >> ~/.bashrc
+source ~/.bashrc
+
 kitchen-sink/
 ├── infrastructure/              # All Terraform modules go here
 │   ├── argocd/                  # Terraform that targets your k3s cluster
@@ -41,14 +49,13 @@ kitchen-sink/
 
 
 ArgoCD
-1. get the password
-k -n argocd get secret argocd-initial-admin-secret \
-  -o jsonpath="{.data.password}" | base64 -d; echo 
-
-2. patch argocd-service to NodePort to access console
+1. patch argocd-service to NodePort to access console
 kubectl patch svc argocd-server -n argocd \
   -p '{"spec":{"type":"NodePort"}}'
 
-3. view
+2. view console at 10.0.0.200/NODEPORT_IP
 
-Infrastructure is not done
+3. get the password
+k -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d; echo 
+

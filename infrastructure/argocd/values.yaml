@@ -1,16 +1,16 @@
 server:
-  ingress:
-    enabled: true
-    ingressClassName: traefik
-    annotations:
-      kubernetes.io/ingress.class: traefik
-    hosts:
-      - argocd.kitchensink
-    paths:
-      - /
-    pathType: Prefix
   service:
     type: ClusterIP
+  # ingress:
+  #   enabled: true
+  #   ingressClassName: traefik
+  #   annotations:
+  #     kubernetes.io/ingress.class: traefik
+  #   hosts:
+  #     - argocd.kitchensink
+  #   paths:
+  #     - /
+  #   pathType: Prefix
 
 server:
   service:
