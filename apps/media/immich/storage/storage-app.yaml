@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: immich-storage
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/calbertan/kitchen-sink.git
+    targetRevision: HEAD
+    path: apps/media/immich/storage
+    directory:
+      recurse: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

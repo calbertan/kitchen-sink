@@ -59,3 +59,11 @@ kubectl patch svc argocd-server -n argocd \
 k -n argocd get secret argocd-initial-admin-secret \
   -o jsonpath="{.data.password}" | base64 -d; echo 
 
+Tailscale
+0. Create a Tailscale account
+
+1. Install tailscale in the server
+curl -fsSL https://tailscale.com/install.sh | sh
+
+2. Add server to tailscale account
+sudo tailscale up --ssh
