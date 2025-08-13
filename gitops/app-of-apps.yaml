@@ -1,5 +1,5 @@
 # App of apps
-apiVersion: argoproj.io/v1alpha
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: app-of-apps
@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/calbertan/kitchen-sink
     targetRevision: HEAD
-    path: .
+    path: gitops
   
   destination: 
     # internal service for api server, can do this because its an internal server

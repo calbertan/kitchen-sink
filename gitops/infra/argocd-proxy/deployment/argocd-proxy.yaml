@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/calbertan/kitchen-sink.git
     targetRevision: HEAD
-    path: gitops/infra/argocd
+    path: gitops/infra/argocd/deployment
   destination:
     server: https://kubernetes.default.svc
     namespace: infra
