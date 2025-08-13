@@ -1,20 +1,20 @@
+# App of apps
 apiVersion: argoproj.io/v1alpha
 kind: Application
 metadata:
-  name: test-argo-application
+  name: app-of-apps
   namespace: argocd
 spec:
-  project: test-project
-  
+  project: default
   source:
     repoURL: https://github.com/calbertan/kitchen-sink
     targetRevision: HEAD
-    path: apps
+    path: .
   
   destination: 
     # internal service for api server, can do this because its an internal server
     server: https://kubernetes.default.svc  
-    namespace: test
+    namespace: argocd
 
   syncPolicy:
     syncOptions:
