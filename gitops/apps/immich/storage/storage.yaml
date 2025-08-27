@@ -33,7 +33,7 @@ metadata:
   name: immich-ml-pv
   namespace: immich
 spec:
-  storageClassName: manual-path
+  storageClassName: manual
   capacity:
       storage: 10Gi
   accessModes:
