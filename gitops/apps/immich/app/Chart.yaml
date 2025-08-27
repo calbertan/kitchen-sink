@@ -1,0 +1,7 @@
+apiVersion: v1
+name: immich-app
+version: 1.0.0
+dependencies:
+  - name: immich-app
+    version: 0.9.3
+    repository: oci://ghcr.io/immich-app/immich-charts/immich
