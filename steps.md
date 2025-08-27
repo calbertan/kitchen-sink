@@ -67,3 +67,5 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 2. Add server to tailscale account
 sudo tailscale up --ssh
+
+3. connect to tailscale
