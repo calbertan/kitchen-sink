@@ -34,10 +34,8 @@ redis:
 # Immich server
 server:
   ingress:
-      main:
-        enabled: false
-service:
-  type: NodePort
+    main:
+      enabled: false
   # enabled: true
   # image:
   #   repository: ghcr.io/immich-app/immich-server
