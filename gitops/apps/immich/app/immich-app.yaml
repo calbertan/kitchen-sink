@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/calbertan/kitchen-sink.git
-    targetRevision: HEAD
-    path: gitops/apps/immich/app
+    repoURL: https://immich-app.github.io/helm-charts
+    chart: immich
+    targetRevision: 0.9.3
     helm:
       valueFiles:
         - values.yaml
