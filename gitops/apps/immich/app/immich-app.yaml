@@ -6,16 +6,12 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://immich-app.github.io/immich-charts
-    chart: immich
-    targetRevision: 0.9.3
+    repoURL: https://github.com/calbertan/kitchen-sink.git
+    targetRevision: HEAD
+    path: gitops/apps/immich/app/chart
     helm:
       valueFiles:
         - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: immich
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
