@@ -1,69 +1,70 @@
-# Environment variables for Immich
-env:
-  REDIS_HOSTNAME: '{{ printf "%s-redis-master" .Release.Name }}'
-  DB_HOSTNAME: "immich-postgres.immich.svc.cluster.local"   # CNPG Postgres service
-  DB_USERNAME: "immich"                                       # from Secret
-  DB_DATABASE_NAME: "immich"
-  DB_PASSWORD: "immich"
-  IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
-
-# # Immich images
-# image:
-#   tag: v1.139.4
-
-# Immich persistence
 immich:
-  metrics:
-    enabled: false
-  persistence:
-    library:
-      existingClaim: immich-library-pvc
-  configuration: {}
-
-# Disable Helm Postgres
-postgresql:
-  enabled: false
-
-# Redis (Helm-managed)
-redis:
-  enabled: true
-  architecture: standalone
-  auth:
-    enabled: false
-
-# Immich server
-server:
-  ingress:
-    main:
-      enabled: false
-  # enabled: true
-  # image:
-  #   repository: ghcr.io/immich-app/immich-server
-  #   pullPolicy: IfNotPresent
-  # ingress:
-  #   main:
-  #     enabled: true
-  #     annotations:
-  #       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-  #       traefik.ingress.kubernetes.io/service.serversscheme: https
-  #       traefik.ingress.kubernetes.io/service.nativelb: "true"
-  #       traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
-  #     hosts:
-  #       - host: immich.kube
-  #         paths:
-  #           - path: "/"
-  #     tls: []
-
-# Machine learning service
-machine-learning:
-  enabled: true
-  image:
-    repository: ghcr.io/immich-app/immich-machine-learning
-    pullPolicy: IfNotPresent
+  # Environment variables for Immich
   env:
-    TRANSFORMERS_CACHE: /cache
-  persistence:
-    cache:
-      enabled: true
-      size: 10Gi
-      existingClaim: immich-ml-pvc
+    REDIS_HOSTNAME: '{{ printf "%s-redis-master" .Release.Name }}'
+    DB_HOSTNAME: "immich-postgres.immich.svc.cluster.local"   # CNPG Postgres service
+    DB_USERNAME: "immich"                                       # from Secret
+    DB_DATABASE_NAME: "immich"
+    DB_PASSWORD: "immich"
+    IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
+
+  # # Immich images
+  # image:
+  #   tag: v1.139.4
+
+  # Immich persistence
+  immich:
+    metrics:
+      enabled: false
+    persistence:
+      library:
+        existingClaim: immich-library-pvc
+    configuration: {}
+
+  # Disable Helm Postgres
+  postgresql:
+    enabled: false
+
+  # Redis (Helm-managed)
+  redis:
+    enabled: true
+    architecture: standalone
+    auth:
+      enabled: false
+
+  # Immich server
+  server:
+    ingress:
+      main:
+        enabled: false
+    # enabled: true
+    # image:
+    #   repository: ghcr.io/immich-app/immich-server
+    #   pullPolicy: IfNotPresent
+    # ingress:
+    #   main:
+    #     enabled: true
+    #     annotations:
+    #       traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    #       traefik.ingress.kubernetes.io/service.serversscheme: https
+    #       traefik.ingress.kubernetes.io/service.nativelb: "true"
+    #       traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+    #     hosts:
+    #       - host: immich.kube
+    #         paths:
+    #           - path: "/"
+    #     tls: []
+
+  # Machine learning service
+  machine-learning:
+    enabled: true
+    image:
+      repository: ghcr.io/immich-app/immich-machine-learning
+      pullPolicy: IfNotPresent
+    env:
+      TRANSFORMERS_CACHE: /cache
+    persistence:
+      cache:
+        enabled: true
+        size: 10Gi
+        existingClaim: immich-ml-pvc
