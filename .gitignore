@@ -1,3 +1,4 @@
 .kube
 .terraform*
 *.tfvars
+*.lock
