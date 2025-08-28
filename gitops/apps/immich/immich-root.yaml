@@ -8,13 +8,16 @@ spec:
   source:
     repoURL: https://github.com/calbertan/kitchen-sink.git
     targetRevision: HEAD
-    path: gitops/apps/immich/deployment
+    path: gitops/apps/immich/app
     directory:
       recurse: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: media
+    namespace: immich
+
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
+    syncOptions:
+      - CreateNamespace=true

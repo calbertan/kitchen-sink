@@ -1,21 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: immich
+  name: immich-app
   namespace: argocd
 spec:
   project: default
   source:
-    chart: immich
-    repoURL: oci://ghcr.io/immich-app/immich-charts
-    targetRevision: 0.9.3
+    repoURL: https://github.com/calbertan/kitchen-sink.git
+    targetRevision: HEAD
+    path: gitops/apps/immich/app/deployment
     helm:
       valueFiles:
         - values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: fridge
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+    namespace: immich

@@ -1,0 +1,55 @@
+## library-pvc
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-library-pv
+  namespace: immich
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/usr/share/synology/immich"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-library-pvc
+  namespace: immich
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+## ml-pvc
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: immich-ml-pv
+  namespace: immich
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/k8s-volumes/immich-ml"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: immich-ml-pvc
+  namespace: immich
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
