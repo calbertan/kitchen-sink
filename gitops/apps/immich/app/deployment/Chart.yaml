@@ -5,3 +5,5 @@ dependencies:
   - name: immich
     version: 0.9.3
     repository: "file://charts/immich-0.9.3.tgz"
+    import-values:
+      - data: immich
