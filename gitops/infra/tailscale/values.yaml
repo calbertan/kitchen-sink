@@ -1,0 +1,4 @@
+tailscale-operator:
+  oauth:
+    clientId: 'kRXMGiTV7W11CNTRL'
+    clientSecret: 'tskey-client-kRXMGiTV7W11CNTRL-7gXdUbVxMz7D4Q6w64u118FYFfzEWCEG'
