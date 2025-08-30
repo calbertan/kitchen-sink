@@ -31,13 +31,13 @@ immich:
 
   # Immich server
   server:
-    enabled: false
-    # image:
-    #   repository: ghcr.io/immich-app/immich-server
-    #   pullPolicy: IfNotPresent
-    # ingress:
-    #   main:
-    #     enabled: true
+    enabled: true
+    image:
+      repository: ghcr.io/immich-app/immich-server
+      pullPolicy: IfNotPresent
+    ingress:
+      main:
+        enabled: false
         # annotations:
         #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
         #   traefik.ingress.kubernetes.io/service.serversscheme: https
