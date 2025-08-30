@@ -38,18 +38,13 @@ immich:
     ingress:
       main:
         enabled: true
-        spec:
-        defaultBackend:
-          service:
-            name: immich-server
-            port:
-              number: 2283
-        ## if multiiple ingress types, determine which method we are using
         ingressClassName: tailscale
-        tls:
-          - hosts:
-            - tailscale
-
+        hosts:
+          - host: immich
+            paths:
+              - path: "/"
+                pathType: Prefix
+        tls: []
         # annotations:
         #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
         #   traefik.ingress.kubernetes.io/service.serversscheme: https
