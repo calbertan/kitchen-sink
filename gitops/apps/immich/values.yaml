@@ -40,7 +40,7 @@ immich:
         enabled: true
         ingressClassName: tailscale
         hosts:
-          - host: immich
+          - host: immich.fell-shilling.ts.net
             paths:
               - path: "/"
                 pathType: Prefix
