@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin-server
+spec:
+  defaultBackend:
+    service:
+      name: jellyfin
+      port:
+        number: 8096
+
+  ## if multiiple ingress types, determine which method we are using
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+      - jellyfin
