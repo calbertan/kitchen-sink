@@ -3,23 +3,22 @@ kind: Ingress
 metadata:
   name: immich-server
 spec:
-  # defaultBackend:
-  #   service:
-  #     name: immich-server
-  #     port:
-  #       number: 2283
-  ingressClassName: tailscale
-  rules:
-    - host: immich.fell-shilling.ts.net
-      http:
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: immich-server
-                port:
-                  number: 2283
+  defaultBackend:
+    service:
+      name: immich-server
+      port:
+        number: 2283
+  # rules:
+  #   - host: immich.fell-shilling.ts.net
+  #     http:
+  #       paths:
+  #         - path: /
+  #           pathType: ImplementationSpecific
+  #           backend:
+  #             service:
+  #               name: immich-server
+  #               port:
+  #                 number: 2283
 
   ## if multiiple ingress types, determine which method we are using
   ingressClassName: tailscale
