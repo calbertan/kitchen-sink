@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/calbertan/kitchen-sink.git
-    path: gitops/apps/jellyfin/helm
+    path: gitops/apps/jellyfin
     targetRevision: HEAD
     helm:
       valueFiles:
