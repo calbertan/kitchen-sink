@@ -1,0 +1,10 @@
+apiVersion: v2
+name: jellyseerr
+description: A Helm chart for Kubernetes
+version: 0.1.0
+appVersion: "2.7.3"
+
+dependencies:
+  - name: jellyseerr
+    repository: file://charts/jellyseerr
+    version: 2.6.2
