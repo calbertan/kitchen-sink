@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jellyfin
+  namespace: argocd
+spec:
+  project: media-project
+  source:
+    repoURL: https://github.com/calbertan/kitchen-sink.git
+    targetRevision: HEAD
+    path: gitops/apps/jellyfin
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: jellyfin
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+  

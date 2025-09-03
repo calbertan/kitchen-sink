@@ -1,3 +1,4 @@
+# Taken from https://github.com/fallenbagel/jellyseerr/blob/develop/charts/jellyseerr-chart/values.yaml
 replicaCount: 1
 
 image:

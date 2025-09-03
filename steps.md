@@ -32,21 +32,6 @@ sudo chown "$USER:$USER" ~/.kube/config
 echo 'export KUBECONFIG=$HOME/.kube/config' >> ~/.bashrc
 source ~/.bashrc
 
-kitchen-sink/
-├── infrastructure/              # All Terraform modules go here
-│   ├── argocd/                  # Terraform that targets your k3s cluster
-│   │   ├── values.yaml
-│   │   └── main.tf              # (Optional) main entrypoint
-│   └── terraform.tfstate.d/     # Local or remote state files
-│
-├── apps/                        # Everything ArgoCD manages (GitOps)
-│   ├── infra/                   # Root "App of Apps" ArgoCD app
-│   └── media/                   # App: Plex, Jellyfin, etc.
-│       └── librephotos/         
-
-├── README.md
-└── .gitignore
-
 
 ArgoCD
 1. patch argocd-service to NodePort to access console
@@ -69,3 +54,37 @@ curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up --ssh
 
 3. connect to tailscale
+
+
+## Immich
+https://www.frankzhao.com.au/Kubernetes/Immich
+
+
+## Folder structure
+gitops/
+├── apps/                       # workloads managed by ArgoCD
+│   ├── tailscale/
+│   │   ├── Chart.yaml
+│   │   └── values.yaml
+│   ├── immich/
+│   ├── jellyfin/
+│   └── jellyseerr/
+│
+└── argocd/                     # ArgoCD self-management
+    ├── base/                   # ArgoCD installation manifests
+    │   ├── namespace.yaml
+    │   ├── argocd-install.yaml   # official ArgoCD manifests or Helm release
+    │   └── ingress.yaml          # ingress for the ArgoCD server
+    │
+    ├── argocd-appProjects/     # grouping of apps
+    │   ├── media-project.yaml   # groups jellyfin, immich, jellyseerr
+    │   └── infra-project.yaml   # groups tailscale, etc.
+    │
+    ├── argocd-apps/            # actual Application CRs
+    │   ├── tailscale.yaml
+    │   ├── immich.yaml
+    │   ├── jellyfin.yaml
+    │   └── jellyseerr.yaml
+    │
+    └── root-app.yaml           # App of Apps (points to argocd-apps/ and argocd-appProjects/)
+

@@ -2,4 +2,3 @@
 .terraform*
 *.tfvars
 *.lock
-charts

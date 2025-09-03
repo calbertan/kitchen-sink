@@ -1,20 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jellyfin
-  namespace: argocd  # ArgoCD’s own namespace
+  name: immich
+  namespace: argocd
 spec:
-  project: default
+  project: backup-project
   source:
     repoURL: https://github.com/calbertan/kitchen-sink.git
-    path: gitops/apps/jellyfin
     targetRevision: HEAD
-    helm:
-      valueFiles:
-        - values.yaml
+    path: gitops/apps/immich
   destination:
     server: https://kubernetes.default.svc
-    namespace: jellyfin
+    namespace: immich
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
+  

@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: media-project
+  namespace: argocd
+spec:
+  description: "media server stack"
+  destinations:
+  - namespace: jellyfin
+    server: https://kubernetes.default.svc
+  - namespace: jellyseerr
+    server: https://kubernetes.default.svc
