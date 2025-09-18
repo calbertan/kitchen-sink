@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: networking-project
+  name: storage-project
   namespace: argocd
 spec:
-  description: "networking services"
+  description: "storage services"
   destinations:
-  - namespace: tailscale
+  - namespace: immich
     server: https://kubernetes.default.svc
