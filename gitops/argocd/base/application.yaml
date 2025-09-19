@@ -9,20 +9,12 @@ spec:
     repoURL: https://argoproj.github.io/argo-helm
     chart: argo-cd
     targetRevision: 6.9.2     # pin the chart version you want
-    # helm:
-    #   values: |
-    #     server:
-    #       ingress:
-    #         enabled: true
-    #         ingressClassName: nginx
-    #         hosts:
-    #           - argocd.example.tailnet
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
     syncOptions:
       - CreateNamespace=true

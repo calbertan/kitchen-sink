@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd    # where ArgoCD is running
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/calbertan/kitchen-sink
+    targetRevision: HEAD
+    path: gitops/argocd/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
