@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
 spec:
   description: "media server stack"
+  sourceRepos:
+    - 'https://github.com/calbertan/kitchen-sink.git'
   destinations:
   - namespace: jellyfin
     server: https://kubernetes.default.svc

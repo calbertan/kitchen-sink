@@ -5,6 +5,8 @@ metadata:
   namespace: argocd
 spec:
   description: "storage services"
+  sourceRepos:
+    - 'https://github.com/calbertan/kitchen-sink.git'
   destinations:
   - namespace: immich
     server: https://kubernetes.default.svc
