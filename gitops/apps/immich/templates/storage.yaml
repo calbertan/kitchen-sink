@@ -5,6 +5,7 @@ metadata:
   name: immich-library-pv
   namespace: immich
 spec:
+  project: storage-project
   storageClassName: manual
   capacity:
     storage: 100Gi
@@ -19,6 +20,7 @@ metadata:
   name: immich-library-pvc
   namespace: immich
 spec:
+  project: storage-project
   storageClassName: manual
   accessModes:
     - ReadWriteOnce
@@ -33,6 +35,7 @@ metadata:
   name: immich-ml-pv
   namespace: immich
 spec:
+  project: storage-project
   storageClassName: manual
   capacity:
     storage: 10Gi
@@ -47,6 +50,7 @@ metadata:
   name: immich-ml-pvc
   namespace: immich
 spec:
+  project: storage-project
   storageClassName: manual
   accessModes:
     - ReadWriteOnce
