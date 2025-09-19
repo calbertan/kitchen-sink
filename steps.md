@@ -62,7 +62,7 @@ https://www.frankzhao.com.au/Kubernetes/Immich
 
 ## Folder structure
 gitops/
-├── apps/                       # workloads managed by ArgoCD
+├── apps/                             # workloads managed by ArgoCD
 │   ├── tailscale/
 │   │   ├── Chart.yaml
 │   │   └── values.yaml
@@ -70,21 +70,21 @@ gitops/
 │   ├── jellyfin/
 │   └── jellyseerr/
 │
-└── argocd/                     # ArgoCD self-management
-    ├── base/                   # ArgoCD installation manifests
-    │   ├── namespace.yaml
-    │   ├── argocd-install.yaml   # official ArgoCD manifests or Helm release
-    │   └── ingress.yaml          # ingress for the ArgoCD server
+└── argocd/                           # ArgoCD self-management
+    ├── argocd-appProjects/           # grouping of apps
+    │   ├── media-project.yaml        # groups jellyfin, immich, jellyseerr
+    │   └── networking-project.yaml   # groups tailscale, etc.
     │
-    ├── argocd-appProjects/     # grouping of apps
-    │   ├── media-project.yaml   # groups jellyfin, immich, jellyseerr
-    │   └── infra-project.yaml   # groups tailscale, etc.
-    │
-    ├── argocd-apps/            # actual Application CRs
+    ├── argocd-apps/                  # actual Application CRs
     │   ├── tailscale.yaml
     │   ├── immich.yaml
     │   ├── jellyfin.yaml
     │   └── jellyseerr.yaml
     │
-    └── root-app.yaml           # App of Apps (points to argocd-apps/ and argocd-appProjects/)
+    └── base/                         # ArgoCD installation manifests
+        ├── Chart.yaml
+        ├── values.yaml
+        └── templates/
+            └── ingress.yaml          # ingress for the ArgoCD server
+
 

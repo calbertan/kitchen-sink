@@ -8,5 +8,8 @@ spec:
   sourceRepos:
     - 'https://github.com/calbertan/kitchen-sink.git'
   destinations:
-  - namespace: immich
-    server: https://kubernetes.default.svc
+    - namespace: immich
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ""
+      kind: PersistentVolume
