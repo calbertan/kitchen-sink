@@ -1,0 +1,6 @@
+Jellyseerr Chart is taken from https://github.com/Fallenbagel/jellyseerr
+
+As of 22/09/2025, there is no official helm chart repo
+with an index.html, so instead of using the same umbrella 
+helm chart pattern as other applications, this is taken from
+jellyseers/charts repo from github
