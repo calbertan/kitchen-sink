@@ -5,7 +5,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: jellyseerr
+      name: jellyseerr-jellyseerr-chart
       port:
         number: 80
 
