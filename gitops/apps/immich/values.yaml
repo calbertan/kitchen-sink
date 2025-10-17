@@ -1,94 +1,95 @@
-# Environment variables for Immich
-env:
-  DB_HOSTNAME: "immich-postgres-rw.immich.svc.cluster.local"
-
-envFrom:
-  - secretRef:
-      name: immich-postgres-user
-
-controllers:
-  main:
-    containers:
-      main:
-        image:
-          tag: v2.0.0
-        env:
-          REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
-          IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
-
-valkey:
-  enabled: true
-  controllers:
-    main:
-      containers:
-        main:
-          image:
-            repository: docker.io/valkey/valkey
-            tag: 8.1-alpine@sha256:e706d1213aaba6896c162bb6a3a9e1894e1a435f28f8f856d14fab2e10aa098b
-            pullPolicy: IfNotPresent
-  persistence:
-    data:
-      enabled: true
-      size: 1Gi
-      # Optional: Set this to pvc to keep job queues persistent
-      type: emptyDir
-      accessMode: ReadWriteOnce
-      # storageClass: your-class
-
-# Immich persistence
 immich:
-  metrics:
-    enabled: false
-  persistence:
-    library:
-      existingClaim: immich-library-pvc
-  configuration: {}
+  # Environment variables for Immich
+  env:
+    DB_HOSTNAME: "immich-postgres-rw.immich.svc.cluster.local"
 
-# # Redis (Helm-managed)
-# redis:
-#   enabled: true
-#   architecture: standalone
-#   auth:
-#     enabled: false
+  envFrom:
+    - secretRef:
+        name: immich-postgres-user
 
-# Immich server
-server:
-  enabled: true
   controllers:
     main:
       containers:
         main:
           image:
-            repository: ghcr.io/immich-app/immich-server
-            pullPolicy: IfNotPresent
-  ingress:
-    main:
-      enabled: false
-      # annotations:
-      #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      #   traefik.ingress.kubernetes.io/service.serversscheme: https
-      #   traefik.ingress.kubernetes.io/service.nativelb: "true"
-      #   traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
-      # hosts:
-      #   - host: immich.kube
-      #     paths:
-      #       - path: "/"
-      # tls: []
-
-# Machine learning service
-machine-learning:
-  enabled: true
-  controllers:
-    main:
-      containers:
-        main:
-          image:
-            repository: ghcr.io/immich-app/immich-machine-learning
-            pullPolicy: IfNotPresent
+            tag: v2.0.0
           env:
-            TRANSFORMERS_CACHE: /cache
-  persistence:
-    cache:
-      enabled: true
-      size: 10Gi
-      existingClaim: immich-ml-pvc
+            REDIS_HOSTNAME: '{{ printf "%s-valkey" .Release.Name }}'
+            IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
+
+  valkey:
+    enabled: true
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: docker.io/valkey/valkey
+              tag: 8.1-alpine@sha256:e706d1213aaba6896c162bb6a3a9e1894e1a435f28f8f856d14fab2e10aa098b
+              pullPolicy: IfNotPresent
+    persistence:
+      data:
+        enabled: true
+        size: 1Gi
+        # Optional: Set this to pvc to keep job queues persistent
+        type: emptyDir
+        accessMode: ReadWriteOnce
+        # storageClass: your-class
+
+  # Immich persistence
+  immich:
+    metrics:
+      enabled: false
+    persistence:
+      library:
+        existingClaim: immich-library-pvc
+    configuration: {}
+
+  # # Redis (Helm-managed)
+  # redis:
+  #   enabled: true
+  #   architecture: standalone
+  #   auth:
+  #     enabled: false
+
+  # Immich server
+  server:
+    enabled: true
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/immich-app/immich-server
+              pullPolicy: IfNotPresent
+    ingress:
+      main:
+        enabled: false
+        # annotations:
+        #   traefik.ingress.kubernetes.io/router.entrypoints: websecure
+        #   traefik.ingress.kubernetes.io/service.serversscheme: https
+        #   traefik.ingress.kubernetes.io/service.nativelb: "true"
+        #   traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+        # hosts:
+        #   - host: immich.kube
+        #     paths:
+        #       - path: "/"
+        # tls: []
+
+  # Machine learning service
+  machine-learning:
+    enabled: true
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: ghcr.io/immich-app/immich-machine-learning
+              pullPolicy: IfNotPresent
+            env:
+              TRANSFORMERS_CACHE: /cache
+    persistence:
+      cache:
+        enabled: true
+        size: 10Gi
+        existingClaim: immich-ml-pvc
