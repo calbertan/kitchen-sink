@@ -8,10 +8,10 @@ immich:
     DB_DATABASE_NAME: "{{ .Values.postgresql.global.postgresql.auth.database }}"
     DB_PASSWORD: "{{ .Values.postgresql.global.postgresql.auth.password }}"
     IMMICH_MACHINE_LEARNING_URL: '{{ printf "http://%s-machine-learning:3003" .Release.Name }}'
-  
+
   # Immich images
-  # image:
-  #   tag: v1.139.4
+  image:
+    tag: v1.132.3
 
   # Immich persistence
   immich:
