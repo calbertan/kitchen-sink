@@ -6,12 +6,12 @@ metadata:
 spec:
   description: "media server stack"
   sourceRepos:
-    - 'https://github.com/calbertan/kitchen-sink.git'
+    - "https://github.com/calbertan/kitchen-sink.git"
   destinations:
-  - namespace: jellyfin
-    server: https://kubernetes.default.svc
-  - namespace: jellyseerr
-    server: https://kubernetes.default.svc
+    - namespace: jellyfin
+      server: https://kubernetes.default.svc
+    - namespace: jellyseerr
+      server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: ""
       kind: Namespace
