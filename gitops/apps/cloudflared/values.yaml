@@ -73,9 +73,9 @@ securityContext:
 # -- This is for setting up the cloudflared tunnel secrets. For more information checkout: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/local-management/create-local-tunnel/
 tunnelSecrets:
   # -- This is for cloudflared tunnel certificate PEM file.
-  base64EncodedPemFile: ""
+  base64EncodedPemFile: "LS0tLS1CRUdJTiBBUkdPIFRVTk5FTCBUT0tFTi0tLS0tCmV5SjZiMjVsU1VRaU9pSmxNR1JtWTJNMU1tUmtaak0yTnpnNE9UZzJNR1V3TkRJelpETTJOalUzTXlJc0ltRmoKWTI5MWJuUkpSQ0k2SWpjMk5XSmtZV00zWm1aallXRm1ObUl3Tm1VME1qazJNVEJtWmpBM1lXUmtJaXdpWVhCcApWRzlyWlc0aU9pSnNaVGQyTTNCTVVIQlhUMjlWWkVjeFZ6aEJkalpLUVROdFMydG5NVUZ6UlRsclMwOUpTM0E1CkluMD0KLS0tLS1FTkQgQVJHTyBUVU5ORUwgVE9LRU4tLS0tLQo="
   # -- This is for cloudflared tunnel configuration JSON file.
-  base64EncodedConfigJsonFile: ""
+  base64EncodedConfigJsonFile: "eyJBY2NvdW50VGFnIjoiNzY1YmRhYzdmZmNhYWY2YjA2ZTQyOTYxMGZmMDdhZGQiLCJUdW5uZWxTZWNyZXQiOiJtNVNHT1RaZmJhNWpEWnRVdW9OZE9sRk1aamlTdUFsY3Bob0pZQmlDcjd3PSIsIlR1bm5lbElEIjoiYWM2M2FhZGEtOGQ4Ny00MmU3LTk5NzYtZjU3NWE5ZTExMWY3IiwiRW5kcG9pbnQiOiIifQ=="
   # -- This is for setting up the existing secret for the cloudflared tunnel certificate PEM file. If not set, the base64EncodedPemFile will be used.
   existingPemFileSecret:
     # -- This is the name of the existing secret.
