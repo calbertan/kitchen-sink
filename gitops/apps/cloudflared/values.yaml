@@ -109,7 +109,7 @@ cloudflared:
 
   # -- Cloudflare ingress rules. More information can be found here: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/configure-tunnels/local-management/configuration-file/#how-traffic-is-matched
   ingress:
-    - hostname: calbertan.xyz
+    - hostname: *.calbertan.xyz
       service: http://traefik.kube-system.svc.cluster.local:80
 
     - service: http_status:404
