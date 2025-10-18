@@ -5,7 +5,8 @@ metadata:
   namespace: immich
 spec:
   selector:
-    app: immich-server
+    app.kubernetes.io/name: server
+    app.kubernetes.io/instance: immich
   ports:
     - protocol: TCP
       port: 3000
