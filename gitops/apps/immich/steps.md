@@ -8,7 +8,7 @@ https://www.frankzhao.com.au/Kubernetes/Immich
    |- seecret-postgres.yaml  
     |- storage.yaml (pv and pvcs)
 
-1. Create cnpg operator
+1. Create cnpg operator in server
    helm repo add cnpg https://cloudnative-pg.github.io/charts
    helm repo update
    helm install cnpg \

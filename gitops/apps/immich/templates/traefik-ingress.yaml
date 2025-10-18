@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: IngressRoute
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host('immich.calbertan.xyz')
+      kind: rules
+      services:
+        - name: immich-service
+          port: 3000
