@@ -36,3 +36,12 @@ https://artifacthub.io/packages/helm/community-charts/cloudflared
    ```
    cloudflared tunnel route dns <TUNNEL> "<HOSTNAME>"
    ```
+
+### To create ingress
+
+1. Create traefik-ingress
+
+2. Create traefik-service where the selector must match the server, which can be determined by the following
+   ```
+   k get pods -n <NAMESPACE> --show-labels
+   ```
