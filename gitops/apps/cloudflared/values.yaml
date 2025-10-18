@@ -87,7 +87,7 @@ tunnelSecrets:
     # -- This is the name of the existing secret.
     name: "config-json-file-secret"
     # -- This is the key of the configuration JSON file in the existing secret.
-    key: "credentials.json"
+    key: "cloudflared-credentials.json"
 
 # -- Please find more configuration from https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/configuration/arguments/
 tunnelConfig:
