@@ -12,7 +12,7 @@ This is my personal playground for infrastructure experiments and self-hosted pr
 - **RAM**: 8GB
 - **Storage**: 256GB SSD
 - **OS**: Ubuntu 22.04.2 LTS
-- **IP Address**: 10.0.0.200 (Static)
+- **IP Address**: dynamic
 
 ## Infrastructure
 
